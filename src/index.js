@@ -4,10 +4,10 @@ import './index.css';
 
 
 //Components
-import Header from "./Components/Header/header"
-import Search from "./Components/Search/search"
+// import Header from "./Components/Header/header"
+// import Search from "./Components/Search/search"
 import ContactList from "./Components/ContactList/contactList"
-import Footer from "./Components/Footer/footer"
+// import Footer from "./Components/Footer/footer"
 
 
 class App extends Component {
@@ -29,7 +29,7 @@ class App extends Component {
         "Role": "User",
         "Status": "Inctive",
         "Email": "camil@gmail.com",
-      }
+      },
     ]
 
   }
@@ -39,10 +39,10 @@ class App extends Component {
     const { List } = this.state;
     return (
       <Fragment>
-        <Header />
-        <Search />
+        {/* <Header /> */}
+        {/* <Search /> */}
         <ContactList List={List} />
-        <Footer />
+        {/* <Footer /> */}
       </Fragment>
     )
   }
