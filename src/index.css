@@ -174,3 +174,12 @@ body{margin-top:20px;}
 .table-stats .table-line-plus .status-social-icon {
 	color: #a75d54;
 }
+/*Search*/*/*/*/*/*/*/*/*/*//*/*/*/*/*/*/*/*/
+.input-group {
+	position: relative;
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: stretch;
+	width: 73%;
+  }

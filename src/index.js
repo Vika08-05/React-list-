@@ -2,12 +2,14 @@ import React, { Fragment, Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+import { v4 as uuidv4 } from "uuid"
 
 //Components
-// import Header from "./Components/Header/header"
-// import Search from "./Components/Search/search"
+import Header from "./Components/Header/header"
+// import Contact from "./Components/About/Contact"
+import Search from "./Components/Search/search"
 import ContactList from "./Components/ContactList/contactList"
-// import Footer from "./Components/Footer/footer"
+import Footer from "./Components/Footer/footer"
 
 
 class App extends Component {
@@ -15,20 +17,44 @@ class App extends Component {
   state = {
     List: [
       {
-        "Avatar": "https://www.bootdey.com/img/Content/avatar/avatar3.png",
+        "Id": uuidv4(),
+        "Avatar": "88",
         "Name": "Mila Kunis",
         "Created": "2013/08/08",
         "Role": "Admin",
         "Status": "Active",
         "Email": "mila@kunis.com",
+        "Gender": "women",
       },
       {
-        "Avatar": "https://www.bootdey.com/img/Content/avatar/avatar2.png",
-        "Name": "Camil Jonson",
+        "Id": uuidv4(),
+        "Avatar": "68",
+        "Name": "Camil Blass",
         "Created": "2013/02/08",
         "Role": "User",
         "Status": "Inctive",
         "Email": "camil@gmail.com",
+        "Gender": "men",
+      },
+      {
+        "Id": uuidv4(),
+        "Avatar": "33",
+        "Name": "Jenifer Jonson",
+        "Created": "2013/02/08",
+        "Role": "Pending",
+        "Status": "Banned",
+        "Email": "jj@gmail.com",
+        "Gender": "men",
+      },
+      {
+        "Id": uuidv4(),
+        "Avatar": "36",
+        "Name": "John Black",
+        "Created": "2013/02/08",
+        "Role": "User",
+        "Status": "Pending",
+        "Email": "jj@gmail.com",
+        "Gender": "men",
       },
     ]
 
@@ -39,10 +65,11 @@ class App extends Component {
     const { List } = this.state;
     return (
       <Fragment>
-        {/* <Header /> */}
-        {/* <Search /> */}
+        {/* <Contact /> */}
+        <Header />
+        <Search />
         <ContactList List={List} />
-        {/* <Footer /> */}
+        <Footer />
       </Fragment>
     )
   }

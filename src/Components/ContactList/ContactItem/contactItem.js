@@ -1,18 +1,46 @@
 import React from "react"
+import { render } from "react-dom";
 
-const ContactItem = ({Avatar,Name,Role,Status,Email,Created}) => {
-    return (
-        <tr>
-            <td>
-                <img src={Avatar} alt=""/>
+class ContactItem extends React.Component {
+    state = {
+        "Avatar": this.props.Avatar,
+        "Name": this.props.Name,
+        "Created": this.props.Created,
+        "Role": this.props.Role,
+        "Status": this.props.Status,
+        "Email": this.props.Email,
+        "Gender": this.props.Gender,
+    }
+    render() {
+        const { Avatar, Name, Created, Role, Status, Email, Gender } = this.state;
+        const URL = `https://randomuser.me/api/portraits/${Gender}/${Avatar}.jpg`
+
+        let statusStyle = "badge bg-secondary"
+        if (Status === "Active") {
+            statusStyle = "badge bg-success"
+        }
+        else if (Status === "Banned") {
+            statusStyle = "badge bg-danger"
+        }
+        if (Status === "Inactive") {
+            statusStyle = "badge bg-success"
+        }
+        if (Status === "Pending") {
+            statusStyle = "badge bg-warning"
+        }
+
+        return (
+            <tr>
+                <td>
+                    <img src={URL} alt="" />
                     <a href="#" className="user-link">{Name}</a>
                     <span className="user-subhead">{Role}</span>
-							</td>
+                </td>
                 <td>
                     {Created}
-							</td>
+                </td>
                 <td className="text-center">
-                    <span className="label label-default">{Status}</span>
+                    <span className={statusStyle}>{Status}</span>
                 </td>
                 <td>
                     <a href="#">{Email}</a>
@@ -37,10 +65,9 @@ const ContactItem = ({Avatar,Name,Role,Status,Email,Created}) => {
                         </span>
                     </a>
                 </td>
-		</tr>
-    )
+            </tr>
+        )
+    }
 }
-
-
 
 export default ContactItem;
