@@ -1,6 +1,6 @@
 import React from "react"
 import { render } from "react-dom";
-
+import "./contactItem.css";
 class ContactItem extends React.Component {
     state = {
         "Avatar": this.props.Avatar,
@@ -11,22 +11,41 @@ class ContactItem extends React.Component {
         "Email": this.props.Email,
         "Gender": this.props.Gender,
     }
+
+    onStatusChange = () => {
+        if (this.state.Status === "Inactive") {
+            this.setState({
+                "Status": "Active"
+            })
+        }
+       else if (this.state.Status === "Active") {
+            this.setState({
+                "Status": "Pending"
+            })
+        }
+       else if (this.state.Status === "Pending") {
+            this.setState({
+                "Status": "Banned"
+            })
+        }
+       else if (this.state.Status === "Banned") {
+            this.setState({
+                "Status": "Inactive"
+            })
+        }
+    }
+
     render() {
         const { Avatar, Name, Created, Role, Status, Email, Gender } = this.state;
         const URL = `https://randomuser.me/api/portraits/${Gender}/${Avatar}.jpg`
 
-        let statusStyle = "badge bg-secondary"
-        if (Status === "Active") {
-            statusStyle = "badge bg-success"
-        }
-        else if (Status === "Banned") {
-            statusStyle = "badge bg-danger"
-        }
-        if (Status === "Inactive") {
-            statusStyle = "badge bg-success"
-        }
-        if (Status === "Pending") {
-            statusStyle = "badge bg-warning"
+        let statusStyle = "badge bg-secondary status"
+
+        switch (Status) {
+            case 'Active': statusStyle = "badge bg-success  status"; break;
+            case 'Banned': statusStyle = "badge bg-danger status"; break;
+            case 'Inactive': statusStyle = "badge bg-secondary status"; break;
+            case 'Pending': statusStyle = "badge bg-warning status"; break;
         }
 
         return (
@@ -40,7 +59,7 @@ class ContactItem extends React.Component {
                     {Created}
                 </td>
                 <td className="text-center">
-                    <span className={statusStyle}>{Status}</span>
+                    <span className={statusStyle} onClick={this.onStatusChange}>{Status}</span>
                 </td>
                 <td>
                     <a href="#">{Email}</a>
