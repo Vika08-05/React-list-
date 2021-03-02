@@ -61,10 +61,28 @@ class App extends Component {
   }
 
   onStatusChange = (Id) => {
-    console.log("onStatusChange", Id)
     const index = this.state.List.findIndex((elem) => elem.Id === Id)
-    
+    let newList = this.state.List.slice();
+    if (newList[index].Status === "Inactive") {
+      newList[index].Status = "Active"
     }
+   else if (newList[index].Status === "Active") {
+      newList[index].Status = "Pending"
+    }
+   else if (newList[index].Status === "Pending") {
+      newList[index].Status = "Banned"
+    }
+   else if (newList[index].Status === "Banned") {
+      newList[index].Status = "Inactive"
+    }
+    this.setState(() => {
+      return (
+        this.setState({
+          List:newList
+        })
+      )
+    })
+  }
 
   render() {
     const { List } = this.state;

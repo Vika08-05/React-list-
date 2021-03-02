@@ -5,7 +5,7 @@ import ContactItem from "./ContactItem/contactItem"
 const ContactList = ({ List, onStatusChange}) => {
     const item = List.map(contact => {
         return (
-            <ContactItem Id={contact.Id} Avatar={contact.Avatar} Name={contact.Name} Created={contact.Created} Role={contact.Role} Status={contact.Status} Email={contact.Email} Gender={contact.Gender} onStatusChange={()=> onStatusChange(contact.Id)} />
+            <ContactItem key={contact.Id} Avatar={contact.Avatar} Name={contact.Name} Created={contact.Created} Role={contact.Role} Status={contact.Status} Email={contact.Email} Gender={contact.Gender} onStatusChange={()=> onStatusChange(contact.Id)} />
         )
     })
 

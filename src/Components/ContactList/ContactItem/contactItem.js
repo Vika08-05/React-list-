@@ -2,20 +2,11 @@ import React from "react"
 import { render } from "react-dom";
 import "./contactItem.css";
 class ContactItem extends React.Component {
-    state = {
-        "Avatar": this.props.Avatar,
-        "Name": this.props.Name,
-        "Created": this.props.Created,
-        "Role": this.props.Role,
-        "Status": this.props.Status,
-        "Email": this.props.Email,
-        "Gender": this.props.Gender,
-    }
 
     render() {
         console.log('contactItem props =>', this.props)
         const { onStatusChange } = this.props;
-        const { Avatar, Name, Created, Role, Status, Email, Gender } = this.state;
+        const { Avatar, Name, Created, Role, Status, Email, Gender } = this.props;
         const URL = `https://randomuser.me/api/portraits/${Gender}/${Avatar}.jpg`
 
         let statusStyle = "badge bg-secondary status"
