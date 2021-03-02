@@ -60,6 +60,11 @@ class App extends Component {
 
   }
 
+  onStatusChange = (Id) => {
+    console.log("onStatusChange", Id)
+    const index = this.state.List.findIndex((elem) => elem.Id === Id)
+    
+    }
 
   render() {
     const { List } = this.state;
@@ -68,7 +73,7 @@ class App extends Component {
         {/* <Contact /> */}
         <Header />
         <Search />
-        <ContactList List={List} />
+        <ContactList List={List} onStatusChange={this.onStatusChange} />
         <Footer />
       </Fragment>
     )

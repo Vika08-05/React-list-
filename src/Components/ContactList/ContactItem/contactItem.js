@@ -12,30 +12,9 @@ class ContactItem extends React.Component {
         "Gender": this.props.Gender,
     }
 
-    onStatusChange = () => {
-        if (this.state.Status === "Inactive") {
-            this.setState({
-                "Status": "Active"
-            })
-        }
-       else if (this.state.Status === "Active") {
-            this.setState({
-                "Status": "Pending"
-            })
-        }
-       else if (this.state.Status === "Pending") {
-            this.setState({
-                "Status": "Banned"
-            })
-        }
-       else if (this.state.Status === "Banned") {
-            this.setState({
-                "Status": "Inactive"
-            })
-        }
-    }
-
     render() {
+        console.log('contactItem props =>', this.props)
+        const { onStatusChange } = this.props;
         const { Avatar, Name, Created, Role, Status, Email, Gender } = this.state;
         const URL = `https://randomuser.me/api/portraits/${Gender}/${Avatar}.jpg`
 
@@ -59,7 +38,7 @@ class ContactItem extends React.Component {
                     {Created}
                 </td>
                 <td className="text-center">
-                    <span className={statusStyle} onClick={this.onStatusChange}>{Status}</span>
+                    <span className={statusStyle} onClick={onStatusChange}>{Status}</span>
                 </td>
                 <td>
                     <a href="#">{Email}</a>
