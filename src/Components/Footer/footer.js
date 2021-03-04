@@ -4,7 +4,6 @@ const Footer = () => {
     return (
 
         <footer className="footer">
-            {/* <button class="btn-block btn-primary"><a href="./newContact" style={{ color: "white" }}>Add New Contact</a></button> */}
             <div className="copyright">
                 <p>copy 2013 - Organisation</p>
                 <div className="social">

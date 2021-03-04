@@ -26,6 +26,9 @@ const Contact = () => {
         <label>Enter date you created:</label>
         <input type="text" />
         <br></br>
+        <label>Enter your image:</label>
+        <input type="text"/>
+        <br></br>
         <button className="btn-block btn-primary sub" style={{ color: "white" }}> Submit </button>
       </form>
       <button className="btn-block btn-primary home"><a href="./index.js" style={{ color: "white" }}>Home</a></button>

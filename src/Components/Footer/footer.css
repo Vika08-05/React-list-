@@ -1,12 +1,14 @@
 .btn-block {
-    margin: 0 auto;
-    display: block;
-    width: 72%;
+  margin: 0 auto;
+  display: block;
+  width: 15%;
 }
-.btn-primary{
-    height: 40px;
-    background-color: #3bc0c3;
-    border: 1px solid #3bc0c3;
+.btn-primary {
+  font-size: 15px;
+  float: right;
+  height: 32px;
+  background-color: #3bc0c3;
+  border: 1px solid #3bc0c3;
 }
 .footer {
     width: 73%;
