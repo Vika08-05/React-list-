@@ -3,7 +3,7 @@ import "./about.css"
 
 const Contact = () => {
   return (
-    <div className="container">
+    <div className="container-form">
       <form className="form">
         <label>Enter your Name:</label>
         <input type="text" />
@@ -26,12 +26,11 @@ const Contact = () => {
         <label>Enter date you created:</label>
         <input type="text" />
         <br></br>
-        <label>Enter your image:</label>
-        <input type="text"/>
+        <label>Enter your avatar:</label>
+        <input type="text" />
         <br></br>
         <button className="btn-block btn-primary sub" style={{ color: "white" }}> Submit </button>
       </form>
-      <button className="btn-block btn-primary home"><a href="./index.js" style={{ color: "white" }}>Home</a></button>
     </div>
 
   )

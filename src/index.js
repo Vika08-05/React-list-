@@ -14,11 +14,9 @@ import {
 
 //Components
 import Header from "./Components/Header/header"
-
-// import Contact from "./Components/About/Contact"
-// import Search from "./Components/Search/search"
 import ContactList from "./Components/ContactList/contactList"
 import Footer from "./Components/Footer/footer"
+import Contact from './Components/Contact/Contact';
 
 
 class App extends Component {
@@ -110,13 +108,14 @@ class App extends Component {
     const { List } = this.state;
     return (
       <Fragment>
-        <Header />
         <Router>
+          <Header />
           <Switch>
-            <Route path="/" exact render={()=> <ContactList List={List} onStatusChange={this.onStatusChange} onDelete={this.onDelete} />}/>
+            <Route path="/" exact render={() => <ContactList List={List} onStatusChange={this.onStatusChange} onDelete={this.onDelete} />} />
+            <Route path="/contact" exact render={() => <Contact />} />
           </Switch>
+          <Footer />
         </Router>
-        <Footer />
       </Fragment>
 
     )
