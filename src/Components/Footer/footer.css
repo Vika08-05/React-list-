@@ -1,12 +1,14 @@
-.btn-block {
+.btn-block-header {
   margin: 0 auto;
   display: block;
   width: 15%;
 }
-.btn-primary {
+.btn-primary-header {
   font-size: 15px;
   float: right;
+  margin-right: 60%;
   height: 32px;
+  margin-top: 1%;
   background-color: #3bc0c3;
   border: 1px solid #3bc0c3;
 }

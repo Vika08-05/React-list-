@@ -2,12 +2,21 @@ import React, { Fragment, Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+//Import uuid
 import { v4 as uuidv4 } from "uuid"
+//Router
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 //Components
 import Header from "./Components/Header/header"
+
 // import Contact from "./Components/About/Contact"
-import Search from "./Components/Search/search"
+// import Search from "./Components/Search/search"
 import ContactList from "./Components/ContactList/contactList"
 import Footer from "./Components/Footer/footer"
 
@@ -64,7 +73,7 @@ class App extends Component {
     const index = this.state.List.findIndex((elem) => elem.Id === Id)
     const partOne = this.state.List.slice(0, index)
     const partTwo = this.state.List.slice(index + 1)
-    const newList = [...partOne,...partTwo]
+    const newList = [...partOne, ...partTwo]
     this.setState(() => {
       return {
         List: newList,
@@ -101,12 +110,15 @@ class App extends Component {
     const { List } = this.state;
     return (
       <Fragment>
-        {/* <Contact /> */}
         <Header />
-        <Search />
-        <ContactList List={List} onStatusChange={this.onStatusChange} onDelete={this.onDelete} />
+        <Router>
+          <Switch>
+            <Route path="/" exact render={()=> <ContactList List={List} onStatusChange={this.onStatusChange} onDelete={this.onDelete} />}/>
+          </Switch>
+        </Router>
         <Footer />
       </Fragment>
+
     )
   }
 }
