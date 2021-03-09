@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
-import "./about.css"
+// import "./about.css"
 import { v4 as uuidv4 } from "uuid"
 import { Redirect } from "react-router-dom";
 
 
-class Contact extends React.Component {
+class Edit extends React.Component {
 
   state = {
     "Avatar": 1,
@@ -67,7 +67,8 @@ class Contact extends React.Component {
     console.log("State", this.state)
     return (
       <Fragment>
-        <div className="col-lg-4 person">
+            <div className="col-lg-4 person">
+                <h1>EDIT</h1>
           <div className="panel-body text-center">
             <div className="pv-lg"><img
               className="center-block img-responsive img-circle img-thumbnail thumb96"
@@ -104,4 +105,4 @@ class Contact extends React.Component {
     )
   }
 }
-export default Contact;
+export default Edit;

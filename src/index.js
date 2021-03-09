@@ -18,6 +18,7 @@ import ContactList from "./Components/ContactList/contactList"
 import Footer from "./Components/Footer/footer"
 import Contact from './Components/Contact/Contact';
 import NotFound from './Components/notFound/notfound';
+import Edit from './Components/Edit/Edit';
 
 
 class App extends Component {
@@ -79,7 +80,19 @@ class App extends Component {
       }
     })
   }
-
+  onEdit = (Id) => {
+    const index = this.state.List.findIndex((elem) => elem.Id === Id)
+    console.log('index',index)
+  }
+  onAddContact = (newContact) => {
+    const tmpList = this.state.List.slice();
+    const newList = [...tmpList, newContact];
+    this.setState(() => {
+      return {
+        List: newList
+      }
+    })
+  }
   onStatusChange = (Id) => {
     const index = this.state.List.findIndex((elem) => elem.Id === Id)
     let newList = this.state.List.slice();
@@ -112,8 +125,8 @@ class App extends Component {
         <Router>
           <Header />
           <Switch>
-            <Route path="/" exact render={() => <ContactList List={List} onStatusChange={this.onStatusChange} onDelete={this.onDelete} />} />
-            <Route path="/contact" exact render={() => <Contact />} />
+            <Route path="/" exact render={() => <ContactList onEdit={this.onEdit} List={List} onStatusChange={this.onStatusChange} onDelete={this.onDelete} />} />
+            <Route path="/contact" exact render={() => <Contact onAddContact={this.onAddContact} />} />
             <Route component={NotFound} />
           </Switch>
           <Footer />
