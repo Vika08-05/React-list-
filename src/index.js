@@ -82,7 +82,7 @@ class App extends Component {
   }
   onEdit = (Id) => {
     const index = this.state.List.findIndex((elem) => elem.Id === Id)
-    console.log('index',index)
+    console.log('index', index)
   }
   onAddContact = (newContact) => {
     const tmpList = this.state.List.slice();
@@ -127,6 +127,7 @@ class App extends Component {
           <Switch>
             <Route path="/" exact render={() => <ContactList onEdit={this.onEdit} List={List} onStatusChange={this.onStatusChange} onDelete={this.onDelete} />} />
             <Route path="/contact" exact render={() => <Contact onAddContact={this.onAddContact} />} />
+            <Edit />
             <Route component={NotFound} />
           </Switch>
           <Footer />
