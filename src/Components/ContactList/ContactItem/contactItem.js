@@ -6,9 +6,13 @@ import "./contactItem.css";
 
 
 class ContactItem extends React.Component {
+
+
+
+
     render() {
         console.log('contactItem props =>', this.props)
-        const { onStatusChange, onDelete } = this.props;
+        const { onStatusChange, onDelete,onEdit } = this.props;
         const { Avatar, Name, Created, Role, Status, Email, Gender } = this.props;
         const URL = `https://randomuser.me/api/portraits/${Gender}/${Avatar}.jpg`
 
@@ -45,7 +49,7 @@ class ContactItem extends React.Component {
                         </span>
                     </a>
 
-                    <Link to="./Edit" className="table-link pending">
+                    <Link to="/edit" className="table-link pending" onClick={onEdit}>
                         <span className="fa-stack">
                             <i className="fa fa-square fa-stack-2x"></i>
                             <i className="fa fa-pencil fa-stack-1x fa-inverse"></i>
