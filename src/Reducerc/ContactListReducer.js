@@ -1,5 +1,5 @@
 const initialState = {
-    List: 0
+    List: []
 }
 
 const ContactListReducer = (state = initialState, action) => {

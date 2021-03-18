@@ -47,8 +47,8 @@ URL = "https://front-end-511f5-default-rtdb.firebaseio.com/List.json"
 //     currentContact: ""
 //   }
 
-updateDatabase = () => {
-    const data = fetch(this.URL)
+export const updateDatabase = () => {
+    const data = fetch(URL)
         .then(responce => {
             return responce.json();
         }).then(data => {
