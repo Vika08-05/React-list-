@@ -65,7 +65,6 @@ class Contact extends React.Component {
       )
     }
     const URL = `https://randomuser.me/api/portraits/${Gender}/${Avatar}.jpg`
-    console.log("State", this.state)
     return (
       <Fragment>
         <div className="col-lg-4 person">

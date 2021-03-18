@@ -1,9 +1,14 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
 //Import uuid
 import { v4 as uuidv4 } from "uuid"
+
+//Redux store
+import store from "./store";
+import { Provider } from "react-redux";
+
 //Router
 import {
   BrowserRouter as Router,
@@ -22,75 +27,11 @@ import Edit from './Components/Edit/Edit';
 
 
 class App extends Component {
-  URL = "https://front-end-511f5-default-rtdb.firebaseio.com/List.json"
-  state = {
-    // List: [
-    //   {
-    //     "Id": uuidv4(),
-    //     "Avatar": "88",
-    //     "Name": "Mila Kunis",
-    //     "Created": "2013/08/08",
-    //     "Role": "Admin",
-    //     "Status": "Active",
-    //     "Email": "mila@kunis.com",
-    //     "Gender": "women",
-    //   },
-    //   {
-    //     "Id": uuidv4(),
-    //     "Avatar": "68",
-    //     "Name": "Camil Blass",
-    //     "Created": "2013/02/08",
-    //     "Role": "User",
-    //     "Status": "Inactive",
-    //     "Email": "camil@gmail.com",
-    //     "Gender": "men",
-    //   },
-    //   {
-    //     "Id": uuidv4(),
-    //     "Avatar": "33",
-    //     "Name": "Jenifer Jonson",
-    //     "Created": "2013/02/08",
-    //     "Role": "User",
-    //     "Status": "Banned",
-    //     "Email": "jj@gmail.com",
-    //     "Gender": "men",
-    //   },
-    //   {
-    //     "Id": uuidv4(),
-    //     "Avatar": "36",
-    //     "Name": "John Black",
-    //     "Created": "2013/02/08",
-    //     "Role": "User",
-    //     "Status": "Pending",
-    //     "Email": "jj@gmail.com",
-    //     "Gender": "men",
-    //   },
-    // ],
-    List: [],
-    currentContact: ""
-  }
 
   componentDidMount() {
     this.updateDatabase();
   }
 
-  updateDatabase = () => {
-    fetch(this.URL)
-      .then(responce => {
-        return responce.json();
-      }).then(data => {
-        if (data !== null) {
-          this.setState(() => {
-            return {
-              List: data
-            }
-          })
-        }
-
-      })
-      .catch(err => console.log(err))
-
-  }
 
   saveData = (contactList) => {
     fetch(this.URL, {
@@ -104,6 +45,9 @@ class App extends Component {
     }).catch(err => console.log(err));
   }
 
+
+
+
   onDelete = (Id) => {
     const index = this.state.List.findIndex((elem) => elem.Id === Id)
     const partOne = this.state.List.slice(0, index)
@@ -114,6 +58,7 @@ class App extends Component {
         List: newList,
       }
     })
+    this.saveData(newList)
   }
   //////
   onEdit = (Id) => {
@@ -136,6 +81,7 @@ class App extends Component {
         List: newList,
       };
     })
+    this.saveData(newList)
   }
   /////
   onAddContact = (newContact) => {
@@ -176,20 +122,18 @@ class App extends Component {
   render() {
     const { List, currentContact } = this.state;
     return (
-      <Fragment>
+      <Provider store={store}>
         <Router>
           <Header />
           <Switch>
-            <Route path="/" exact render={() => <ContactList onEdit={this.onEdit} List={List} onStatusChange={this.onStatusChange} onDelete={this.onDelete} />} />
+            <Route path="/" exact render={() => <ContactList onSearch={this.onSearch} onEdit={this.onEdit} filteredList={this.filteredList} List={List} onStatusChange={this.onStatusChange} onDelete={this.onDelete} />} />
             <Route path="/contact" exact render={() => <Contact onAddContact={this.onAddContact} />} />
-            ///////
             <Route path="/edit" exact render={() => <Edit currentContact={currentContact} onEditCurrentContact={this.onEditCurrentContact} />} />
-            ///////
             <Route component={NotFound} />
           </Switch>
           <Footer />
         </Router>
-      </Fragment>
+      </Provider>
 
     )
   }
