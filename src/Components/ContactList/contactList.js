@@ -1,17 +1,15 @@
 import React, { Fragment, useEffect } from "react"
 import { connect } from "react-redux"
 import { updateDatabase } from "../../Services/api-service"
-import {getAllContacts} from "../../Actions/ContactListActions"
-
-
+import { getAllContacts } from "../../Actions/ContactListActions"
 import ContactItem from "./ContactItem/contactItem"
 
-const ContactList = ({ List,getAllContacts }) => {
+const ContactList = ({ List, getAllContacts }) => {
 
 
     useEffect(() => {
         updateDatabase().then(data => {
-           getAllContacts(data)
+            getAllContacts(data)
         })
     })
 
@@ -56,6 +54,6 @@ const mapStateToProps = ({ ContactListReducer }) => {
     return { List }
 }
 const mapDispatchToProps = {
-    getAllContacts
+    getAllContacts,
 }
-export default connect(mapStateToProps,mapDispatchToProps)(ContactList);
+export default connect(mapStateToProps, mapDispatchToProps)(ContactList);

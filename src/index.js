@@ -28,23 +28,6 @@ import Edit from './Components/Edit/Edit';
 
 class App extends Component {
 
-  // componentDidMount() {
-  //   this.updateDatabase();
-  // }
-
-
-  // saveData = (contactList) => {
-  //   fetch(this.URL, {
-  //     method: "PUT",
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(contactList),
-  //   }).then(responce => {
-  //     console.log("saveDate responce => ", responce)
-  //   }).catch(err => console.log(err));
-  // }
-
 
 
 
@@ -120,7 +103,7 @@ class App extends Component {
   // }
 
   render() {
-    // const { List, currentContact } = this.state;
+
     return (
       <Provider store={store}>
         <Router>

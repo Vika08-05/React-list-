@@ -8,7 +8,6 @@ import "./contactItem.css";
 class ContactItem extends React.Component {
 
     render() {
-        console.log('contactItem props =>', this.props)
         const { onStatusChange, onDelete, onEdit } = this.props;
         const { Avatar, Name, Created, Role, Status, Email, Gender } = this.props;
         const URL = `https://randomuser.me/api/portraits/${Gender}/${Avatar}.jpg`
