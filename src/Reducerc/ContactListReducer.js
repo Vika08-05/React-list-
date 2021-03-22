@@ -12,6 +12,10 @@ const ContactListReducer = (state = initialState, action) => {
             return {
                 List: action.payload
             }
+        case "DELETE_CONTACT":
+            return {
+                List: action.payload
+            }
         default:
             return state
     }

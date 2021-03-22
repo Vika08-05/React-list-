@@ -54,6 +54,6 @@ const mapStateToProps = ({ ContactListReducer }) => {
     return { List }
 }
 const mapDispatchToProps = {
-    getAllContacts,
+    getAllContacts
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ContactList);

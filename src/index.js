@@ -5,6 +5,9 @@ import './index.css';
 //Import uuid
 import { v4 as uuidv4 } from "uuid"
 
+
+
+
 //Redux store
 import store from "./store";
 import { Provider } from "react-redux";
@@ -29,20 +32,6 @@ import Edit from './Components/Edit/Edit';
 class App extends Component {
 
 
-
-
-  // onDelete = (Id) => {
-  //   const index = this.state.List.findIndex((elem) => elem.Id === Id)
-  //   const partOne = this.state.List.slice(0, index)
-  //   const partTwo = this.state.List.slice(index + 1)
-  //   const newList = [...partOne, ...partTwo]
-  //   this.setState(() => {
-  //     return {
-  //       List: newList,
-  //     }
-  //   })
-  //   this.saveData(newList)
-  // }
   // //////
   // onEdit = (Id) => {
   //   const index = this.state.List.findIndex((elem) => elem.Id === Id);
@@ -63,17 +52,6 @@ class App extends Component {
   //     return {
   //       List: newList,
   //     };
-  //   })
-  //   this.saveData(newList)
-  // }
-  // /////
-  // onAddContact = (newContact) => {
-  //   const tmpList = this.state.List.slice();
-  //   const newList = [...tmpList, newContact];
-  //   this.setState(() => {
-  //     return {
-  //       List: newList
-  //     }
   //   })
   //   this.saveData(newList)
   // }
@@ -109,7 +87,7 @@ class App extends Component {
         <Router>
           <Header />
           <Switch>
-            <Route path="/"  exact component={ContactList} />
+            <Route path="/" exact component={ContactList} />
             <Route path="/contact" exact component={Contact} />
             <Route path="/edit" exact component={Edit} />
             <Route component={NotFound} />

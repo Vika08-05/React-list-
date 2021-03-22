@@ -60,8 +60,7 @@ class Contact extends React.Component {
       isRedirect: true
     })
   }
-
-
+  
   render() {
     const { Name, Gender, Avatar, isRedirect } = this.state;
     if (isRedirect) {
